@@ -77,8 +77,6 @@ CREATE TABLE registrations (
     UNIQUE (student_id, course_id)
 );
 
--- ── SEED DATA ─────────────────────────────────────────────────────
-
 -- Departments (English)
 INSERT INTO departments (code, name, faculty, office) VALUES
 ('CS',   'Computer Science', 'Engineering', 'Room 101'),
