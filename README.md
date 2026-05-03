@@ -56,7 +56,7 @@ The system has been pre-loaded with sample data.
   - Password: pass123
 * Student Role: 
   - Email: lananh@student.edu 
-  - Password: 1234
+  - Password: 123
 
 Thank you very much for your time reviewing and grading our project!
 ====================================================================
