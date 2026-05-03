@@ -1,8 +1,11 @@
 DROP DATABASE IF EXISTS course_registration;
 CREATE DATABASE course_registration CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE course_registration;
+-- -------------------------------------------------------------
+-- 1. DATABASE SCHEMA DEFINITION
+-- -------------------------------------------------------------
 
--- Tables (same schema as before, no changes needed)
+-- Table to store University Departments information
 CREATE TABLE departments (
     id      INT AUTO_INCREMENT PRIMARY KEY,
     code    VARCHAR(10)  NOT NULL UNIQUE,
@@ -12,6 +15,7 @@ CREATE TABLE departments (
     phone   VARCHAR(20)
 );
 
+-- Table for Instructor/Faculty details
 CREATE TABLE instructors (
     id       INT AUTO_INCREMENT PRIMARY KEY,
     name     VARCHAR(100) NOT NULL,
@@ -23,6 +27,7 @@ CREATE TABLE instructors (
     FOREIGN KEY (dept_id) REFERENCES departments(id)
 );
 
+-- Table for Student records
 CREATE TABLE students (
     id          VARCHAR(20) PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
@@ -35,6 +40,7 @@ CREATE TABLE students (
     FOREIGN KEY (dept_id) REFERENCES departments(id)
 );
 
+-- Table for System Administrators
 CREATE TABLE admins (
     id       INT AUTO_INCREMENT PRIMARY KEY,
     name     VARCHAR(100) NOT NULL,
@@ -42,6 +48,7 @@ CREATE TABLE admins (
     password VARCHAR(255) NOT NULL
 );
 
+-- Table for Course information
 CREATE TABLE courses (
     id            INT AUTO_INCREMENT PRIMARY KEY,
     code          VARCHAR(20)  UNIQUE NOT NULL,
@@ -55,6 +62,7 @@ CREATE TABLE courses (
     FOREIGN KEY (instructor_id) REFERENCES instructors(id)
 );
 
+-- Table for Course Schedules
 CREATE TABLE schedules (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     course_id   INT NOT NULL,
@@ -65,6 +73,7 @@ CREATE TABLE schedules (
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
+-- Table for Enrollment/Registration link
 CREATE TABLE registrations (
     id            INT AUTO_INCREMENT PRIMARY KEY,
     student_id    VARCHAR(20) NOT NULL,
@@ -76,6 +85,9 @@ CREATE TABLE registrations (
     FOREIGN KEY (course_id)  REFERENCES courses(id),
     UNIQUE (student_id, course_id)
 );
+-- -------------------------------------------------------------
+-- 2. SEED DATA (INITIALIZATION)
+-- -------------------------------------------------------------
 
 -- Departments (English)
 INSERT INTO departments (code, name, faculty, office) VALUES
