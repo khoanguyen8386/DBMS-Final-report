@@ -11,7 +11,7 @@ public class DBConnection {
         "?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Ho_Chi_Minh";
 
     private static final String USER     = "root";
-    private static final String PASSWORD = "987654321@n"; // <-- change this
+    private static final String PASSWORD = "987654321@n"; // <-- change this to the password when you set on your own SQL
 
     private static Connection connection;
 
