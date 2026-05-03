@@ -77,7 +77,6 @@ public class AdminService {
     // ── Override enrollment ───────────────────────────────────────────────────
 
     /**
-     * Force-enroll a student ignoring capacity limits.
      * Used by admin to override the normal enrollment rules.
      */
     public boolean forceEnroll(String studentId, int courseId) {
@@ -93,7 +92,6 @@ public class AdminService {
 
     /**
      * Override the registration status directly.
-     * e.g. move from 'waitlisted' to 'enrolled'
      */
     public boolean overrideStatus(String studentId, int courseId, String newStatus) {
         return registrationDAO.updateStatus(studentId, courseId, newStatus);
